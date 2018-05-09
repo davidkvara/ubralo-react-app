@@ -1,4 +1,6 @@
-* {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -15,7 +17,8 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 832px;
+  padding: 0 1rem;
   margin: 0 auto;
 }
 
