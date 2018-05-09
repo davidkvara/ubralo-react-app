@@ -1,26 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { observer } from "mobx-react";
 import "./assets/style.css";
 
-const App = ({ name }) => (
-  <div className="container">
-    <h1 className="title">
-      Ubralo React App
-      <span title="PAWN" style={{ color: "black" }}>
-        &#9817;
-      </span>
-    </h1>
-    <hr />
-    <h2>Hello {name}!</h2>
-  </div>
-);
+@observer
+class App extends React.Component {
+  render() {
+    const { name, todos } = this.props.store;
 
-App.propTypes = {
-  name: PropTypes.string.isRequired
-};
-
-App.defaultProps = {
-  name: "World"
-};
-
+    return (
+      <div className="container">
+        <h1 className="title">Ubralo React App with Mobx</h1>
+        <h2>Hello {name}</h2>
+        <ul>{todos.map(todo => <li key={todo}>{todo}</li>)}</ul>
+      </div>
+    );
+  }
+}
 export default App;
