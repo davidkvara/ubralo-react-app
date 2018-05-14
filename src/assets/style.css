@@ -31,3 +31,8 @@ h2,
 h3 {
   font-weight: 500;
 }
+
+.border {
+  border: 2px solid hotpink;
+  padding: 1rem 2rem;
+}
