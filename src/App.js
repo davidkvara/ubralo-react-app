@@ -1,26 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
-import "./assets/style.css";
 
-const App = ({ name }) => (
-  <div className="container">
-    <h1 className="title">
-      Ubralo React App
-      <span title="PAWN" style={{ color: "black" }}>
-        &#9817;
-      </span>
-    </h1>
-    <hr />
-    <h2>Hello {name}!</h2>
+export default () => (
+  <div style={{ padding: "2rem 3rem" }}>
+    <h1 className="title">ubralo-react-app</h1>
+    {helloworld}
   </div>
 );
 
-App.propTypes = {
-  name: PropTypes.string.isRequired
-};
-
-App.defaultProps = {
-  name: "World"
-};
-
-export default App;
+const helloworld = (
+  <h2>
+    <span role="img" aria-labelledby="hello World">
+      😘 🌎
+    </span>
+  </h2>
+);

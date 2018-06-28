@@ -18,10 +18,6 @@ export default class Clock extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <p>you know what time it is: {this.state.time.toLocaleTimeString()}</p>
-      </div>
-    );
+    return this.props.children(this.state.time.toLocaleTimeString());
   }
 }

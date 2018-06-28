@@ -1,7 +1,7 @@
 import React from "react";
 
 class Widget extends React.Component {
-  state = { value: "" };
+  state = { value: "say my name" };
 
   handleChange = e => {
     this.setState({ value: e.target.value });
@@ -14,7 +14,7 @@ class Widget extends React.Component {
           type="text"
           onChange={this.handleChange}
           value={this.state.value}
-          placeholder="placeholder"
+          placeholder="who r u?"
         />
         <h2>{this.state.value}</h2>
       </div>
