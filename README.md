@@ -1,3 +1,3 @@
-## ubralo-react-app
+# ubralo-react-app
 
-უბრალო რეაქტ აპი
+React App starter with webpack4 config.
