@@ -1,16 +1,14 @@
 import React from "react";
+import a11y_icon from "./assets/outline_accessibility.png";
 
 export default () => (
-  <div style={{ padding: "2rem 3rem" }}>
-    <h1 className="title">ubralo-react-app</h1>
-    {helloworld}
-  </div>
-);
+  <div className="mw9 center pa4 avenir">
+    <h1 className="code mt0 f2">ubralo-react-app</h1>
 
-const helloworld = (
-  <h2>
-    <span role="img" aria-labelledby="hello World">
-      😘 🌎
-    </span>
-  </h2>
+    <img
+      src={a11y_icon}
+      className="ba b--dotted b--purple bw2 pa2"
+      alt="accessibility icon"
+    />
+  </div>
 );

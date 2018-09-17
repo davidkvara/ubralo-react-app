@@ -1,24 +1,17 @@
 import React from "react";
 
 class Widget extends React.Component {
-  state = { value: "say my name" };
+  state = { value: 0 };
 
-  handleChange = e => {
-    this.setState({ value: e.target.value });
+  handleChange = () => {
+    this.setState(state => ({ value: state.value + 1 }));
   };
 
   render() {
-    return (
-      <div>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.value}
-          placeholder="who r u?"
-        />
-        <h2>{this.state.value}</h2>
-      </div>
-    );
+    return this.props.children({
+      value: this.state.value,
+      onChange: this.handleChange
+    });
   }
 }
 
