@@ -1,12 +1,26 @@
 const path = require("path");
 const webpack = require("webpack");
 const htmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ]
+  },
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js"
+    filename: "src/js/bundle.[hash].js"
   },
   devServer: {
     contentBase: "./build",
@@ -33,13 +47,23 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
+        use: [
+          { loader: "style-loader" },
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          { loader: "css-loader" }
+        ]
       },
       {
-        test: /\.(png|jp?g|gif|svg)$/,
+        test: /\.(png|jp?g|svg)$/,
         use: [
           {
-            loader: "file-loader"
+            loader: "file-loader",
+            options: {
+              name: "[hash].[ext]",
+              outputPath: "src/images"
+            }
           }
         ]
       }
@@ -49,7 +73,14 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new htmlWebpackPlugin({
       template: "./public/index.html",
-      favicon: "./public/favicon.ico"
-    })
+      favicon: "./public/favicon.ico",
+      minify: {
+        collapseWhitespace: true
+      }
+    }),
+    new MiniCssExtractPlugin({
+      filename: "src/css/[name].[hash].css"
+    }),
+    new OptimizeCSSAssetsPlugin()
   ]
 };
